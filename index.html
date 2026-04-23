@@ -1,364 +1,1196 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cyrani Houston | Interactive Portfolio</title>
-    <meta
-      name="description"
-      content="Interactive UX/UI portfolio and breathing resume for Cyrani Houston."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <style>
-      :root {
-        --bg: #0a0a0f;
-        --panel: rgba(255,255,255,0.06);
-        --panel-strong: rgba(255,255,255,0.1);
-        --text: #f7f7fb;
-        --muted: #b8bbca;
-        --line: rgba(255,255,255,0.12);
-        --accent: #c7b7ff;
-        --accent-2: #8ec5ff;
-        --shadow: 0 20px 60px rgba(0,0,0,0.35);
-        --radius: 24px;
-        --max: 1160px;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyrani Houston — Product Ops · UX/UI · Data</title>
+  <meta name="description" content="Cyrani Houston — Product Operations, UX/UI, and Data. A breathing resume designed for the HR professional who values craft." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body {
-        margin: 0;
-        font-family: "Inter", system-ui, sans-serif;
-        background:
-          radial-gradient(circle at top left, rgba(142,197,255,0.18), transparent 28%),
-          radial-gradient(circle at top right, rgba(199,183,255,0.20), transparent 26%),
-          linear-gradient(180deg, #090b12 0%, #0d1020 45%, #090a10 100%);
-        color: var(--text);
-      }
+  <style>
+    :root {
+      --bg: #06070d;
+      --surface: rgba(255,255,255,0.04);
+      --surface-hover: rgba(255,255,255,0.07);
+      --border: rgba(255,255,255,0.09);
+      --border-accent: rgba(199,183,255,0.25);
+      --text: #f0eff8;
+      --muted: #9b9aaa;
+      --subtle: #5c5b6e;
+      --lavender: #c7b7ff;
+      --sky: #8ec5ff;
+      --sage: #8ee8c0;
+      --max: 1080px;
+      --r: 20px;
+    }
 
-      a { color: inherit; text-decoration: none; }
-      .container { width: min(calc(100% - 40px), var(--max)); margin: 0 auto; }
-      .section { padding: 88px 0; }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
 
-      .nav {
-        position: sticky;
-        top: 0;
-        z-index: 10;
-        backdrop-filter: blur(16px);
-        background: rgba(10,10,15,0.45);
-        border-bottom: 1px solid var(--line);
-      }
-      .nav-inner {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        min-height: 72px;
-      }
-      .logo { font-weight: 800; letter-spacing: 0.02em; }
-      .nav nav { display: flex; gap: 22px; }
-      .nav a { color: var(--muted); font-weight: 600; }
-      .nav a:hover { color: var(--text); }
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+    }
 
-      .hero {
-        min-height: calc(100vh - 72px);
-        display: flex;
-        align-items: center;
-      }
-      .hero-grid {
-        max-width: 900px;
-      }
-      .eyebrow {
-        color: var(--accent-2);
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.14em;
-        font-size: 0.8rem;
-        margin-bottom: 18px;
-      }
-      h1 {
-        font-size: clamp(2.9rem, 7vw, 5.8rem);
-        line-height: 0.98;
-        letter-spacing: -0.05em;
-        margin: 0 0 22px;
-      }
-      .muted { color: var(--muted); font-weight: 600; }
-      .lead {
-        font-size: clamp(1.05rem, 2vw, 1.35rem);
-        line-height: 1.7;
-        max-width: 720px;
-        color: var(--muted);
-        margin-bottom: 30px;
-      }
-      .btn {
-        display: inline-flex;
-        align-items: center;
-        gap: 10px;
-        padding: 14px 22px;
-        border-radius: 999px;
-        background: linear-gradient(135deg, var(--accent), var(--accent-2));
-        color: #15161e;
-        font-weight: 800;
-        box-shadow: var(--shadow);
-      }
+    /* ─── AMBIENT BACKGROUND ─── */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(140,100,255,0.12), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 110%, rgba(100,180,255,0.10), transparent),
+        radial-gradient(ellipse 50% 30% at 50% 50%, rgba(142,232,192,0.04), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
 
-      h2 {
-        font-size: clamp(1.8rem, 3vw, 3rem);
-        letter-spacing: -0.04em;
-        margin: 0 0 28px;
-      }
-      h3 {
-        font-size: 1.35rem;
-        margin: 0 0 12px;
-        letter-spacing: -0.03em;
-      }
-      p { line-height: 1.7; }
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(calc(100% - 48px), var(--max)); margin: 0 auto; position: relative; z-index: 1; }
 
-      .metric-grid {
-        display: grid;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        gap: 18px;
-      }
-      .metric-card,
-      .card,
-      .timeline-item,
-      .statement .container,
-      .footer .container {
-        background: var(--panel);
-        border: 1px solid var(--line);
-        border-radius: var(--radius);
-        box-shadow: var(--shadow);
-      }
-      .metric-card {
-        padding: 28px 22px;
-      }
-      .metric {
-        font-size: clamp(2.1rem, 4vw, 3.5rem);
-        font-weight: 800;
-        line-height: 1;
-        margin: 0 0 8px;
-      }
-      .metric::after { content: "%"; font-size: 0.55em; margin-left: 2px; }
-      .metric-label { margin: 0; color: var(--muted); }
+    /* ─── NAV ─── */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(20px) saturate(1.4);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      background: rgba(6,7,13,0.6);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.2rem;
+      font-weight: 300;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+    .nav-logo span { color: var(--lavender); }
+    .nav-links { display: flex; gap: 28px; }
+    .nav-links a {
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--text); }
 
-      .card { padding: 32px; }
-      ul {
-        margin: 18px 0 0;
-        padding-left: 20px;
-        color: var(--muted);
-      }
-      li + li { margin-top: 8px; }
+    /* ─── HERO ─── */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 100px 0 80px;
+    }
+    .hero-inner { max-width: 820px; }
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 6px 16px;
+      background: rgba(199,183,255,0.08);
+      border: 1px solid var(--border-accent);
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 36px;
+    }
+    .hero-tag::before {
+      content: "";
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--sage);
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .hero h1 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(3.4rem, 8vw, 7rem);
+      font-weight: 300;
+      line-height: 0.92;
+      letter-spacing: -0.03em;
+      margin-bottom: 28px;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--lavender);
+    }
+    .hero h1 .dim { color: var(--subtle); }
+    .hero-sub {
+      font-size: clamp(1rem, 1.6vw, 1.2rem);
+      line-height: 1.75;
+      color: var(--muted);
+      max-width: 600px;
+      margin-bottom: 44px;
+      font-weight: 300;
+    }
+    .hero-ctas { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      background: linear-gradient(130deg, var(--lavender), var(--sky));
+      color: #0d0d1a;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 16px 48px rgba(150,130,255,0.3); }
+    .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 13px 26px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.85rem;
+      font-weight: 500;
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .btn-ghost:hover { color: var(--text); border-color: var(--border-accent); }
 
-      .timeline {
-        display: grid;
-        gap: 16px;
-      }
-      .timeline-item { padding: 28px; position: relative; overflow: hidden; }
-      .timeline-item::before {
-        content: "";
-        position: absolute;
-        inset: 0 auto 0 0;
-        width: 4px;
-        background: linear-gradient(180deg, var(--accent), var(--accent-2));
-      }
-      .meta { color: var(--muted); margin: 0 0 12px; font-weight: 600; }
+    /* ─── CONTACT BAR ─── */
+    .contact-bar {
+      display: flex;
+      gap: 24px;
+      flex-wrap: wrap;
+      margin-top: 48px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .contact-item svg { opacity: 0.5; }
+    .contact-item a { color: var(--sky); }
+    .contact-item a:hover { color: var(--lavender); }
 
-      .statement .container,
-      .footer .container { padding: 36px; }
-      .footer { padding: 0 0 70px; }
-      .footer a { color: var(--accent-2); }
+    /* ─── SECTION ─── */
+    section { padding: 100px 0; }
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-label::after {
+      content: "";
+      flex: 1;
+      max-width: 48px;
+      height: 1px;
+      background: var(--border);
+    }
+    .section-title {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 56px;
+    }
+    .section-title em { font-style: italic; color: var(--lavender); }
 
-      .reveal {
-        opacity: 0;
-        transform: translateY(24px);
-        transition: opacity 0.8s ease, transform 0.8s ease;
-      }
-      .reveal.visible {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    /* ─── IMPACT METRICS ─── */
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+      margin-bottom: 24px;
+    }
+    .metric-cell {
+      background: var(--bg);
+      padding: 40px 28px;
+      position: relative;
+      overflow: hidden;
+    }
+    .metric-cell::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 28px;
+      right: 28px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--lavender), var(--sky));
+      border-radius: 2px;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .metric-cell:hover::after { opacity: 1; }
+    .metric-num {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(3rem, 5vw, 4.8rem);
+      font-weight: 300;
+      line-height: 1;
+      color: var(--text);
+      letter-spacing: -0.04em;
+    }
+    .metric-num .suffix {
+      font-size: 0.45em;
+      color: var(--lavender);
+      font-weight: 300;
+    }
+    .metric-desc {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .metric-source {
+      margin-top: 6px;
+      font-size: 0.7rem;
+      color: var(--subtle);
+      font-style: italic;
+    }
 
-      @media (max-width: 900px) {
-        .metric-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      }
+    /* ─── SKILLS SECTION ─── */
+    .skills-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+    .skill-group {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+    .skill-group:hover { border-color: var(--border-accent); }
+    .skill-group-icon {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .icon-lavender { background: rgba(199,183,255,0.12); }
+    .icon-sky { background: rgba(142,197,255,0.12); }
+    .icon-sage { background: rgba(142,232,192,0.12); }
+    .icon-warm { background: rgba(255,200,140,0.10); }
+    .skill-group h4 {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 14px;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
+      padding: 5px 13px;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 400;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: color 0.2s, border-color 0.2s;
+    }
+    .tag:hover { color: var(--text); border-color: rgba(255,255,255,0.2); }
+    .tag.hi { border-color: rgba(199,183,255,0.3); color: var(--lavender); }
 
-      @media (max-width: 640px) {
-        .nav-inner { min-height: 64px; }
-        .nav nav { gap: 14px; font-size: 0.95rem; }
-        .section { padding: 68px 0; }
-        .hero { min-height: auto; padding-top: 40px; }
-        .metric-grid { grid-template-columns: 1fr; }
-        .card, .timeline-item, .statement .container, .footer .container { padding: 24px; }
-      }
-    </style>
-  </head>
-  <body>
-    <header class="nav">
-      <div class="container nav-inner">
-        <p class="logo">Cyrani Houston</p>
-        <nav>
-          <a href="#work">Work</a>
-          <a href="#resume">Resume</a>
-          <a href="#contact">Contact</a>
-        </nav>
-      </div>
-    </header>
+    /* ─── EXPERIENCE TIMELINE ─── */
+    .timeline { position: relative; }
+    .timeline-track {
+      position: absolute;
+      left: 0;
+      top: 8px;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(180deg, var(--lavender), var(--sky), transparent);
+      opacity: 0.3;
+    }
+    .timeline-entry {
+      padding-left: 40px;
+      padding-bottom: 56px;
+      position: relative;
+    }
+    .timeline-entry:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: -5px;
+      top: 6px;
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--lavender);
+    }
+    .timeline-dot.sky { border-color: var(--sky); }
+    .timeline-dot.sage { border-color: var(--sage); }
+    .timeline-dot.muted { border-color: var(--subtle); }
+    .timeline-meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .timeline-date {
+      font-size: 0.73rem;
+      color: var(--subtle);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+    .timeline-badge {
+      padding: 3px 10px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .badge-featured { background: rgba(199,183,255,0.12); color: var(--lavender); }
+    .badge-intern { background: rgba(142,197,255,0.10); color: var(--sky); }
+    .badge-lead { background: rgba(142,232,192,0.10); color: var(--sage); }
+    .timeline-entry h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.5rem;
+      font-weight: 400;
+      letter-spacing: -0.02em;
+      margin-bottom: 4px;
+    }
+    .timeline-org {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+    .timeline-org span { color: var(--lavender); }
+    .timeline-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .timeline-bullets li {
+      padding-left: 18px;
+      position: relative;
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .timeline-bullets li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 9px;
+      width: 5px;
+      height: 1px;
+      background: var(--subtle);
+    }
+    .timeline-bullets li strong { color: var(--text); font-weight: 500; }
 
-    <main>
-      <section class="hero section">
-        <div class="container hero-grid reveal">
-          <p class="eyebrow">Product Ops x UX/UI x Data</p>
-          <h1>
-            Hi, I’m Cyrani <span class="muted">(Seer Uh Knee)</span>.<br />
-            I design systems people can feel.
-          </h1>
-          <p class="lead">
-            A breathing resume inspired by apple.com storytelling: cinematic pacing,
-            clear impact, and human-centered outcomes.
-          </p>
-          <a class="btn" href="#work">View Featured Work</a>
-        </div>
-      </section>
+    /* ─── EDUCATION ─── */
+    .edu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .edu-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 32px;
+      transition: border-color 0.3s;
+    }
+    .edu-card:hover { border-color: var(--border-accent); }
+    .edu-card .school {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin-bottom: 6px;
+    }
+    .edu-card .degree {
+      font-size: 0.82rem;
+      color: var(--muted);
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .edu-card .date {
+      font-size: 0.72rem;
+      letter-spacing: 0.08em;
+      color: var(--subtle);
+      margin-bottom: 18px;
+    }
+    .cert-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .cert-list li {
+      font-size: 0.78rem;
+      color: var(--muted);
+      padding-left: 14px;
+      position: relative;
+    }
+    .cert-list li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--lavender);
+      opacity: 0.6;
+    }
 
-      <section class="impact section">
-        <div class="container reveal">
-          <h2>Impact at a glance</h2>
-          <div class="metric-grid">
-            <article class="metric-card">
-              <p class="metric" data-target="30">0</p>
-              <p class="metric-label">reporting time reduced</p>
-            </article>
-            <article class="metric-card">
-              <p class="metric" data-target="50">0</p>
-              <p class="metric-label">editing time reduced</p>
-            </article>
-            <article class="metric-card">
-              <p class="metric" data-target="15">0</p>
-              <p class="metric-label">faster documentation delivery</p>
-            </article>
-            <article class="metric-card">
-              <p class="metric" data-target="10">0</p>
-              <p class="metric-label">interactive dashboards built</p>
-            </article>
-          </div>
-        </div>
-      </section>
+    /* ─── FEATURED PROJECT ─── */
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 52px;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card::before {
+      content: "";
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 240px;
+      height: 240px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(199,183,255,0.08), transparent 70%);
+    }
+    .project-eyebrow {
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--lavender);
+      margin-bottom: 16px;
+    }
+    .project-card h3 {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .project-card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 600px;
+      margin-bottom: 32px;
+    }
+    .project-detail-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 36px;
+      padding-top: 36px;
+      border-top: 1px solid var(--border);
+    }
+    .project-detail h5 {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--subtle);
+      margin-bottom: 8px;
+    }
+    .project-detail p {
+      font-size: 0.84rem;
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+    .project-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 22px;
+      border: 1px solid var(--border-accent);
+      border-radius: 999px;
+      color: var(--lavender);
+      font-size: 0.82rem;
+      font-weight: 500;
+      transition: background 0.2s;
+    }
+    .project-link:hover { background: rgba(199,183,255,0.08); }
 
-      <section id="work" class="section">
-        <div class="container reveal">
-          <h2>Featured project</h2>
-          <article class="card">
-            <h3>UI/UX Capstone — E-commerce Experience</h3>
-            <p>
-              End-to-end product design from research and wireframing to
-              high-fidelity prototyping in Figma, focused on intuitive navigation
-              and conversion flow.
-            </p>
-            <ul>
-              <li>Mapped user flows: browse → checkout → confirmation</li>
-              <li>Built reusable design system + component library</li>
-              <li>Iterated interaction feedback with motion testing</li>
-            </ul>
-          </article>
-        </div>
-      </section>
+    /* ─── LEADERSHIP ─── */
+    .leadership-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .leadership-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 26px;
+      transition: border-color 0.3s;
+    }
+    .leadership-card:hover { border-color: var(--border-accent); }
+    .leadership-card .org-name {
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--sky);
+      margin-bottom: 6px;
+    }
+    .leadership-card h4 {
+      font-size: 0.95rem;
+      font-weight: 500;
+      margin-bottom: 10px;
+    }
+    .leadership-card p {
+      font-size: 0.82rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
 
-      <section id="resume" class="section">
-        <div class="container reveal">
-          <h2>Experience timeline</h2>
-          <div class="timeline">
-            <article class="timeline-item">
-              <h3>HCLTech — Account Operations & Engagement Associate</h3>
-              <p class="meta">Santa Clara, CA • Aug 2025 – Present</p>
-              <p>
-                U.S. point of contact for LinkedIn account operations, managing
-                SOW/PO lifecycle, cross-geo coordination, and workflow visibility.
-              </p>
-            </article>
-            <article class="timeline-item">
-              <h3>Microsoft — Customer Experience Program Manager Intern</h3>
-              <p class="meta">Seattle, WA • May 2024 – Aug 2024</p>
-              <p>
-                Analyzed Power BI telemetry and helped design an AI-driven article
-                submission flow that improved alignment and reduced editing time.
-              </p>
-            </article>
-            <article class="timeline-item">
-              <h3>NC State OIT — IT Governance & Social Media Lead Intern</h3>
-              <p class="meta">Raleigh, NC • May 2023 – May 2025</p>
-              <p>
-                Designed portfolio reporting templates and platform benchmark
-                recommendations to improve executive visibility and planning.
-              </p>
-            </article>
-          </div>
-        </div>
-      </section>
+    /* ─── STATEMENT / ABOUT ─── */
+    .statement-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 80px;
+      align-items: start;
+    }
+    .statement-left { position: sticky; top: 100px; }
+    .statement-big {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(1.6rem, 3vw, 2.6rem);
+      font-weight: 300;
+      line-height: 1.3;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .statement-big em { font-style: italic; color: var(--lavender); }
+    .statement-body {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .statement-body p {
+      font-size: 1rem;
+      line-height: 1.85;
+      color: var(--muted);
+      font-weight: 300;
+    }
+    .statement-body p strong { color: var(--text); font-weight: 500; }
 
-      <section class="section statement">
-        <div class="container reveal">
-          <h2>Personal statement</h2>
-          <p>
-            I’m driven by work that blends structure and creativity. My career path
-            taught me how to turn ambiguity into systems, and systems into outcomes
-            that people can feel.
-          </p>
-          <p>
-            I’m especially excited by teams that empower curiosity and craft, where
-            design decisions are intentional and impact is measurable.
-          </p>
-        </div>
-      </section>
-    </main>
+    /* ─── FOOTER / CONTACT ─── */
+    .footer-section {
+      padding: 80px 0 100px;
+      border-top: 1px solid var(--border);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .footer-headline {
+      font-family: "Cormorant Garamond", Georgia, serif;
+      font-size: clamp(2rem, 4vw, 3.6rem);
+      font-weight: 300;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+    }
+    .footer-headline em { font-style: italic; color: var(--lavender); }
+    .footer-contacts { display: flex; flex-direction: column; gap: 18px; }
+    .footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 18px 22px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      font-size: 0.88rem;
+      color: var(--muted);
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .footer-contact-item:hover { border-color: var(--border-accent); color: var(--text); }
+    .footer-contact-item svg { color: var(--lavender); flex-shrink: 0; }
+    .footer-contact-item a { color: inherit; }
+    .footer-base {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+      color: var(--subtle);
+    }
 
-    <footer id="contact" class="footer">
-      <div class="container reveal">
-        <h2>Let’s build something meaningful.</h2>
-        <p>
-          Reach out at
-          <a href="mailto:cyrani@example.com">cyrani@example.com</a>
+    /* ─── REVEAL ANIMATION ─── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ─── DIVIDER ─── */
+    .divider {
+      height: 1px;
+      background: var(--border);
+      margin: 0;
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 860px) {
+      .metrics-grid { grid-template-columns: 1fr 1fr; }
+      .skills-layout { grid-template-columns: 1fr; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .statement-layout { grid-template-columns: 1fr; gap: 36px; }
+      .statement-left { position: static; }
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      .leadership-grid { grid-template-columns: 1fr; }
+      .project-detail-grid { grid-template-columns: 1fr 1fr; }
+      .project-card { padding: 36px; }
+    }
+    @media (max-width: 580px) {
+      .metrics-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 3rem; }
+      .nav-links { gap: 16px; }
+      .nav-links a { font-size: 0.72rem; }
+      .contact-bar { gap: 14px; }
+      .project-detail-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="container nav-inner">
+      <p class="nav-logo">Cyrani <span>Houston</span></p>
+      <nav class="nav-links">
+        <a href="#impact">Impact</a>
+        <a href="#experience">Experience</a>
+        <a href="#project">Project</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ─── HERO ─── -->
+    <section class="hero">
+      <div class="container hero-inner reveal">
+        <div class="hero-tag">Product Ops · UX/UI · Data</div>
+
+        <h1>
+          I design systems<br/>
+          <em>people can feel.</em><br/>
+          <span class="dim">— Cyrani Houston</span>
+        </h1>
+
+        <p class="hero-sub">
+          A builder at the intersection of operations, design, and data. I turn ambiguity into systems — and systems into outcomes that land.
         </p>
+
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#experience">
+            View Experience
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M3 7h8M7.5 3.5L11 7l-3.5 3.5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn-ghost" href="#project">UI/UX Capstone</a>
+          <a class="btn-ghost" href="https://linkedin.com/in/cyrani-houston" target="_blank">LinkedIn ↗</a>
+        </div>
+
+        <div class="contact-bar">
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M2 3.5h10a.5.5 0 01.5.5v6a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5V4a.5.5 0 01.5-.5z" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 4l5.5 4 5.5-4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <a href="mailto:cyranihouston@gmail.com">cyranihouston@gmail.com</a>
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5A4.5 4.5 0 017 10.5M7 1.5A4.5 4.5 0 017 10.5M1.5 7h11M2 4.5a10.5 10.5 0 0010 0M2 9.5a10.5 10.5 0 0110 0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            Raleigh, NC
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><rect x="1.5" y="1.5" width="11" height="11" rx="2.5" stroke="currentColor" stroke-width="1.2"/><path d="M4.5 6.5v4M4.5 4v.5M7.5 10.5V7a1.5 1.5 0 013 0v3.5M7.5 7.5h3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <a href="https://linkedin.com/in/cyrani-houston" target="_blank">linkedin.com/in/cyrani-houston</a>
+          </div>
+          <div class="contact-item">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M7 1.5a5.5 5.5 0 100 11 5.5 5.5 0 000-11zM7 4v3.5l2 1.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            804.912.7921
+          </div>
+        </div>
       </div>
-    </footer>
+    </section>
 
-    <script>
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add('visible');
-        });
-      }, { threshold: 0.15 });
+    <div class="divider"></div>
 
-      document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+    <!-- ─── IMPACT ─── -->
+    <section id="impact">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-label">By the numbers</p>
+          <h2 class="section-title">Impact at <em>a glance</em></h2>
+        </div>
 
-      const animateMetric = (el) => {
-        const target = Number(el.dataset.target || 0);
-        const duration = 1200;
-        const start = performance.now();
+        <div class="metrics-grid reveal">
+          <div class="metric-cell">
+            <div class="metric-num"><span class="counter" data-target="50">0</span><span class="suffix">%</span></div>
+            <p class="metric-desc">Reduction in editing time</p>
+            <p class="metric-source">Microsoft AI article flow, 2024</p>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num"><span class="counter" data-target="30">0</span><span class="suffix">%</span></div>
+            <p class="metric-desc">Increased visibility</p>
+            <p class="metric-source">NC State OIT social media program</p>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num"><span class="counter" data-target="50">0</span><span class="suffix">+</span></div>
+            <p class="metric-desc">Employees on migration template</p>
+            <p class="metric-source">NC State PM tool migration</p>
+          </div>
+          <div class="metric-cell">
+            <div class="metric-num"><span class="counter" data-target="14">0</span></div>
+            <p class="metric-desc">Power BI fields analyzed</p>
+            <p class="metric-source">Microsoft project intake telemetry</p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        const step = (now) => {
-          const progress = Math.min((now - start) / duration, 1);
-          el.textContent = Math.floor(progress * target);
-          if (progress < 1) requestAnimationFrame(step);
-          else el.textContent = target;
-        };
+    <div class="divider"></div>
 
-        requestAnimationFrame(step);
-      };
+    <!-- ─── SKILLS ─── -->
+    <section id="skills">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-label">Capabilities</p>
+          <h2 class="section-title">Tools &amp; <em>craft</em></h2>
+        </div>
 
-      const metricObserver = new IntersectionObserver((entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting && !entry.target.dataset.animated) {
-            entry.target.dataset.animated = 'true';
-            animateMetric(entry.target);
-          }
-        });
-      }, { threshold: 0.6 });
+        <div class="skills-layout reveal">
+          <div class="skill-group">
+            <div class="skill-group-icon icon-lavender">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><rect x="2" y="2" width="6" height="6" rx="1.5" stroke="#c7b7ff" stroke-width="1.3"/><rect x="10" y="2" width="6" height="6" rx="1.5" stroke="#c7b7ff" stroke-width="1.3"/><rect x="2" y="10" width="6" height="6" rx="1.5" stroke="#c7b7ff" stroke-width="1.3"/><rect x="10" y="10" width="6" height="6" rx="1.5" stroke="#c7b7ff" stroke-width="1.3"/></svg>
+            </div>
+            <h4>Design &amp; UX</h4>
+            <div class="skill-tags">
+              <span class="tag hi">Figma</span>
+              <span class="tag hi">Adobe Express</span>
+              <span class="tag">Wireframing</span>
+              <span class="tag">Prototyping</span>
+              <span class="tag">Design Systems</span>
+              <span class="tag">WordPress</span>
+              <span class="tag">UI Layout</span>
+            </div>
+          </div>
 
-      document.querySelectorAll('.metric').forEach((el) => metricObserver.observe(el));
-    </script>
-  </body>
+          <div class="skill-group">
+            <div class="skill-group-icon icon-sky">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 14l4-5 3 3 3-4 3 4" stroke="#8ec5ff" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="2" width="14" height="14" rx="2" stroke="#8ec5ff" stroke-width="1.3"/></svg>
+            </div>
+            <h4>Data &amp; Analytics</h4>
+            <div class="skill-tags">
+              <span class="tag hi">Power BI</span>
+              <span class="tag hi">Tableau</span>
+              <span class="tag">Excel (Intermediate)</span>
+              <span class="tag">Smartsheet</span>
+              <span class="tag">Telemetry Analysis</span>
+              <span class="tag">Dashboard Design</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-icon icon-sage">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M5 9l3 3 5-6" stroke="#8ee8c0" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><rect x="2" y="2" width="14" height="14" rx="2" stroke="#8ee8c0" stroke-width="1.3"/></svg>
+            </div>
+            <h4>Project Management</h4>
+            <div class="skill-tags">
+              <span class="tag hi">Agile</span>
+              <span class="tag">Daptiv</span>
+              <span class="tag">Microsoft Teams</span>
+              <span class="tag">SOW/PO Lifecycle</span>
+              <span class="tag">Stakeholder Mgmt</span>
+              <span class="tag">Requirements Gathering</span>
+            </div>
+          </div>
+
+          <div class="skill-group">
+            <div class="skill-group-icon icon-warm">
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="3" stroke="#ffca8c" stroke-width="1.3"/><path d="M9 2v2M9 14v2M2 9h2M14 9h2M4.1 4.1l1.4 1.4M12.5 12.5l1.4 1.4M4.1 13.9l1.4-1.4M12.5 5.5l1.4-1.4" stroke="#ffca8c" stroke-width="1.3" stroke-linecap="round"/></svg>
+            </div>
+            <h4>Certifications &amp; Awards</h4>
+            <div class="skill-tags">
+              <span class="tag hi">Copilot Champs (Microsoft)</span>
+              <span class="tag hi">PMI Predictive PM</span>
+              <span class="tag">Truist Emerging Leaders</span>
+              <span class="tag">Kay Yow Spirit Award</span>
+              <span class="tag">OSHA &amp; HIPAA</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ─── EXPERIENCE ─── -->
+    <section id="experience">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-label">Career timeline</p>
+          <h2 class="section-title">Where I've <em>worked</em></h2>
+        </div>
+
+        <div class="timeline reveal">
+          <div class="timeline-track"></div>
+
+          <!-- HCLTech -->
+          <div class="timeline-entry">
+            <div class="timeline-dot"></div>
+            <div class="timeline-meta">
+              <span class="timeline-date">Aug 2025 — Present</span>
+              <span class="timeline-badge badge-featured">Current</span>
+            </div>
+            <h3>Account Operations &amp; Engagement Associate</h3>
+            <p class="timeline-org"><span>HCLTech</span> · Santa Clara, CA</p>
+            <ul class="timeline-bullets">
+              <li>U.S. point of contact for LinkedIn account operations, managing end-to-end <strong>SOW/PO lifecycle</strong>.</li>
+              <li>Cross-geo coordination driving workflow visibility across global teams.</li>
+            </ul>
+          </div>
+
+          <!-- Microsoft -->
+          <div class="timeline-entry">
+            <div class="timeline-dot sky"></div>
+            <div class="timeline-meta">
+              <span class="timeline-date">May – Aug 2024</span>
+              <span class="timeline-badge badge-intern">Internship</span>
+            </div>
+            <h3>Customer Experience Program Manager Intern</h3>
+            <p class="timeline-org"><span>Microsoft</span> · Seattle, WA</p>
+            <ul class="timeline-bullets">
+              <li>Analyzed <strong>Power BI telemetry</strong> across 14 fields in the project intake form; identified underutilized fields and calculated departmental usage rates.</li>
+              <li>Presented findings to stakeholders, recommending enhancements to improve intake process and data quality.</li>
+              <li>Designed an <strong>AI-driven article submission form</strong> based on user feedback — reduced editing time by <strong>50%</strong>.</li>
+              <li>Revamped the department's monthly Outlook newsletter through improved UI layout, boosting reader engagement.</li>
+            </ul>
+          </div>
+
+          <!-- NC State OIT -->
+          <div class="timeline-entry">
+            <div class="timeline-dot sage"></div>
+            <div class="timeline-meta">
+              <span class="timeline-date">Mar 2023 – May 2025</span>
+              <span class="timeline-badge badge-lead">Multi-role</span>
+            </div>
+            <h3>IT Governance &amp; Social Media Lead Intern</h3>
+            <p class="timeline-org"><span>NC State University OIT</span> · Raleigh, NC</p>
+            <ul class="timeline-bullets">
+              <li>Managed <strong>complete migration</strong> of PM software tool; developed cohesive integration template used by <strong>50+ department employees</strong>.</li>
+              <li>Developed standardized Smartsheet template enabling <strong>20+ PMs</strong> to efficiently monitor active project progress.</li>
+              <li>Led team of <strong>5 interns</strong> overseeing social media — facilitated monthly strategy meetings, increasing program visibility by <strong>30%</strong>.</li>
+              <li>Assisted in redesigning the university IT department's website on WordPress, improving user experience.</li>
+            </ul>
+          </div>
+
+          <!-- Enact MI -->
+          <div class="timeline-entry">
+            <div class="timeline-dot muted"></div>
+            <div class="timeline-meta">
+              <span class="timeline-date">Jun – Aug 2023</span>
+              <span class="timeline-badge badge-intern">Internship</span>
+            </div>
+            <h3>IT Project Management Intern</h3>
+            <p class="timeline-org"><span>Enact MI</span> · Raleigh, NC</p>
+            <ul class="timeline-bullets">
+              <li>Managed internal audit documentation project, overseeing remediation of <strong>5 PMs</strong> and holding project within timeline.</li>
+              <li>Led 3-month project using <strong>Daptiv and Microsoft Teams</strong> — orchestrated meetings, monitored advancement, communicated with stakeholders.</li>
+              <li>Participated in weekly Tableau challenges, creating sample dashboards from live datasets.</li>
+            </ul>
+          </div>
+
+          <!-- NC State Development -->
+          <div class="timeline-entry">
+            <div class="timeline-dot muted"></div>
+            <div class="timeline-meta">
+              <span class="timeline-date">Mar 2023 – Present</span>
+              <span class="timeline-badge badge-intern">Internship</span>
+            </div>
+            <h3>Philanthropy Intern</h3>
+            <p class="timeline-org"><span>Office of Development &amp; External Relations, NC State</span> · Raleigh, NC</p>
+            <ul class="timeline-bullets">
+              <li>Strengthened donor relationships through personalized thank-you calls to alumni and student donors.</li>
+              <li>Managed outreach campaigns engaging non-donors and alumni, with focus on relationship-building and communications.</li>
+              <li>Optimized graduate communications for ticketing and graduation details, enhancing engagement across milestones.</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ─── FEATURED PROJECT ─── -->
+    <section id="project">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-label">Portfolio work</p>
+          <h2 class="section-title">Featured <em>project</em></h2>
+        </div>
+
+        <div class="project-card reveal">
+          <p class="project-eyebrow">UI/UX Capstone · Figma · 2024</p>
+          <h3>E-Commerce End-to-End<br/>Experience Design</h3>
+          <p>
+            Full product design lifecycle — from user research and journey mapping to wireframing, high-fidelity prototyping, and an interactive design system in Figma. Built to demonstrate UX craft: intuitive navigation, clear conversion flow, and component-level thinking.
+          </p>
+
+          <a class="project-link" href="https://www.figma.com/proto/YWFrPykc6mdAQXGTUvJCno/Portfolio?page-id=99%3A1613&node-id=99-1614&viewport=649%2C81%2C0.32&t=nGUBEls0qutDRtyi-1&scaling=min-zoom&content-scaling=fixed&starting-point-node-id=99%3A1614" target="_blank">
+            View Figma Prototype
+            <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 10L10 2M10 2H5M10 2v5" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg>
+          </a>
+
+          <div class="project-detail-grid">
+            <div class="project-detail">
+              <h5>Research</h5>
+              <p>User interviews, competitive analysis, persona development, and pain-point mapping.</p>
+            </div>
+            <div class="project-detail">
+              <h5>Design</h5>
+              <p>Browse → Checkout → Confirmation flow. Reusable component library and interactive motion testing.</p>
+            </div>
+            <div class="project-detail">
+              <h5>Outcome</h5>
+              <p>High-fidelity prototype with accessible design tokens and a documented system ready for handoff.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ─── EDUCATION ─── -->
+    <section id="education">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-label">Academic background</p>
+          <h2 class="section-title">Where I <em>learned</em></h2>
+        </div>
+
+        <div class="edu-grid reveal">
+          <div class="edu-card">
+            <p class="school">NC State University</p>
+            <p class="degree">B.S. Business Administration — Information Technology</p>
+            <p class="date">Raleigh, NC · Graduated May 2025</p>
+            <ul class="cert-list">
+              <li>Copilot Champs Training Certification (Microsoft)</li>
+              <li>Fundamentals of Predictive Project Management (PMI)</li>
+              <li>Truist Emerging Leaders Certification</li>
+              <li>Kay Yow Spirit of The Village Award</li>
+            </ul>
+          </div>
+
+          <div class="edu-card">
+            <p class="school">Prague University of Business &amp; Economics</p>
+            <p class="degree">Study Abroad Exchange Program</p>
+            <p class="date">Prague, Czech Republic · Aug – Dec 2023</p>
+            <p style="font-size:0.83rem; color:var(--muted); line-height:1.6; margin-top: 16px;">
+              International coursework in business and economics. Developed cross-cultural communication and adaptability within a global academic environment.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ─── LEADERSHIP ─── -->
+    <section id="leadership">
+      <div class="container">
+        <div class="reveal">
+          <p class="section-label">Beyond the office</p>
+          <h2 class="section-title">Leadership &amp; <em>community</em></h2>
+        </div>
+
+        <div class="leadership-grid reveal">
+          <div class="leadership-card">
+            <p class="org-name">NABA @ NC State</p>
+            <h4>Public Relations Chair</h4>
+            <p>Designed media and event advertising using Adobe Express. Maintained communication with business partners to coordinate collaboration events.</p>
+          </div>
+
+          <div class="leadership-card">
+            <p class="org-name">Poole College of Management</p>
+            <h4>Event Coordinator — Diversity</h4>
+            <p>Organized Black History Month networking event for 50+ students and alumni. Led a team of 5 through an Agile-based planning process.</p>
+          </div>
+
+          <div class="leadership-card">
+            <p class="org-name">WISE Village @ NC State</p>
+            <h4>Administrative Assistant &amp; Student Mentor</h4>
+            <p>Mentored 26 mentees with monthly 1:1s. Planned and facilitated engagement events while managing a semesterly programming budget in Excel.</p>
+          </div>
+
+          <div class="leadership-card">
+            <p class="org-name">Goldman Sachs</p>
+            <h4>2023 Women's Possibilities Summit</h4>
+            <p>Participated in a two-part immersive experience strengthening professional and personal development skills within the workforce.</p>
+          </div>
+
+          <div class="leadership-card">
+            <p class="org-name">FactSet</p>
+            <h4>Client Solutions Extern — MESH Program</h4>
+            <p>Norwalk, CT · Applied client solutions thinking in a two-week intensive extern program with one of the leading financial data platforms.</p>
+          </div>
+
+          <div class="leadership-card">
+            <p class="org-name">Queen in You @ NC State</p>
+            <h4>Treasurer</h4>
+            <p>Maintained annual budget, secured organizational funding through Student Government, and promoted sisterhood within the African American campus community.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ─── STATEMENT ─── -->
+    <section id="about">
+      <div class="container">
+        <div class="statement-layout reveal">
+          <div class="statement-left">
+            <p class="section-label">In their own words</p>
+            <p class="statement-big">Turning <em>ambiguity</em> into systems — and systems into outcomes.</p>
+          </div>
+
+          <div class="statement-body">
+            <p>
+              My career path has been anything but linear — and that's the point. I've moved between <strong>design, data, and operations</strong> not by accident, but because I genuinely believe the best products live at the intersection of all three.
+            </p>
+            <p>
+              At Microsoft, I learned that <strong>telemetry without empathy is just noise</strong>. At NC State OIT, I learned that a well-designed template can quietly unlock 50 people's capacity. And every internship, mentorship, and event I've organized has reinforced the same truth: <strong>systems only matter if the people inside them feel seen</strong>.
+            </p>
+            <p>
+              I'm especially drawn to teams that empower curiosity and craft — where design decisions are <strong>intentional</strong>, ambiguity is treated as a design challenge, and impact is something you can actually measure.
+            </p>
+            <p>
+              This website is the UX project I want to present to you. Not just a portfolio — a proof of how I think.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ─── FOOTER / CONTACT ─── -->
+  <footer class="footer-section" id="contact">
+    <div class="container">
+      <div class="footer-inner reveal">
+        <h2 class="footer-headline">Let's build something <em>meaningful.</em></h2>
+
+        <div class="footer-contacts">
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 4h12a.5.5 0 01.5.5v7a.5.5 0 01-.5.5H2a.5.5 0 01-.5-.5v-7A.5.5 0 012 4z" stroke="currentColor" stroke-width="1.2"/><path d="M1.5 4.5L8 9l6.5-4.5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <a href="mailto:cyranihouston@gmail.com">cyranihouston@gmail.com</a>
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M12 1H4a1 1 0 00-1 1v12a1 1 0 001 1h8a1 1 0 001-1V2a1 1 0 00-1-1zM8 13.5a.5.5 0 110-1 .5.5 0 010 1z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            804.912.7921
+          </div>
+          <div class="footer-contact-item">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="1.5" width="13" height="13" rx="3" stroke="currentColor" stroke-width="1.2"/><path d="M5 7v5M5 4.5V5M8.5 12V8.5a2.5 2.5 0 015 0V12M8.5 7.5h0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            <a href="https://linkedin.com/in/cyrani-houston" target="_blank">linkedin.com/in/cyrani-houston</a>
+          </div>
+          <a class="footer-contact-item project-link" style="border-color: var(--border-accent); color: var(--lavender); margin-top: 4px;" href="https://www.figma.com/proto/YWFrPykc6mdAQXGTUvJCno/Portfolio?page-id=99%3A1613&node-id=99-1614" target="_blank">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M6 3H4a1 1 0 00-1 1v1a2 2 0 002 2h0a2 2 0 002-2V3zM6 3h4M6 3v4M10 3h2a1 1 0 011 1v1a2 2 0 01-2 2h0a2 2 0 01-2-2V3zM6 7a2 2 0 00-2 2v0a2 2 0 002 2h0a2 2 0 002-2v0a2 2 0 00-2-2zM6 11v2a2 2 0 002 2h0a2 2 0 002-2v0a2 2 0 00-2-2h0" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+            View Figma Portfolio ↗
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-base">
+        <span>© 2025 Cyrani Houston</span>
+        <span>Designed &amp; built as a portfolio artifact · Raleigh, NC</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 80);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting && !entry.target.dataset.done) {
+          entry.target.dataset.done = 'true';
+          const el = entry.target;
+          const target = parseInt(el.dataset.target, 10);
+          const dur = 1400;
+          const start = performance.now();
+          const step = now => {
+            const p = Math.min((now - start) / dur, 1);
+            const ease = 1 - Math.pow(1 - p, 3);
+            el.textContent = Math.round(ease * target);
+            if (p < 1) requestAnimationFrame(step);
+            else el.textContent = target;
+          };
+          requestAnimationFrame(step);
+        }
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+  </script>
+</body>
 </html>
