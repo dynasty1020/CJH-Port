@@ -24,6 +24,32 @@
       --sage: #8ee8c0;
       --max: 1080px;
       --r: 20px;
+      --nav-bg: rgba(6,7,13,0.6);
+      --metric-bg: #06070d;
+      --dot-bg: #06070d;
+      --ambient-1: rgba(140,100,255,0.12);
+      --ambient-2: rgba(100,180,255,0.10);
+      --ambient-3: rgba(142,232,192,0.04);
+    }
+
+    [data-theme="light"] {
+      --bg: #f6f5f1;
+      --surface: rgba(0,0,0,0.035);
+      --surface-hover: rgba(0,0,0,0.06);
+      --border: rgba(0,0,0,0.09);
+      --border-accent: rgba(90,58,190,0.22);
+      --text: #19172a;
+      --muted: #55536b;
+      --subtle: #a8a6bc;
+      --lavender: #5a3abe;
+      --sky: #1a60b8;
+      --sage: #157a4a;
+      --nav-bg: rgba(246,245,241,0.78);
+      --metric-bg: #f6f5f1;
+      --dot-bg: #f6f5f1;
+      --ambient-1: rgba(140,100,255,0.06);
+      --ambient-2: rgba(60,140,255,0.05);
+      --ambient-3: rgba(80,200,140,0.03);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -34,6 +60,7 @@
       background: var(--bg);
       color: var(--text);
       overflow-x: hidden;
+      transition: background 0.35s ease, color 0.35s ease;
     }
 
     /* ─── AMBIENT BACKGROUND ─── */
@@ -42,9 +69,9 @@
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 80% 50% at 20% -10%, rgba(140,100,255,0.12), transparent),
-        radial-gradient(ellipse 60% 40% at 80% 110%, rgba(100,180,255,0.10), transparent),
-        radial-gradient(ellipse 50% 30% at 50% 50%, rgba(142,232,192,0.04), transparent);
+        radial-gradient(ellipse 80% 50% at 20% -10%, var(--ambient-1), transparent),
+        radial-gradient(ellipse 60% 40% at 80% 110%, var(--ambient-2), transparent),
+        radial-gradient(ellipse 50% 30% at 50% 50%, var(--ambient-3), transparent);
       pointer-events: none;
       z-index: 0;
     }
@@ -59,7 +86,7 @@
       z-index: 100;
       backdrop-filter: blur(20px) saturate(1.4);
       -webkit-backdrop-filter: blur(20px) saturate(1.4);
-      background: rgba(6,7,13,0.6);
+      background: var(--nav-bg);
       border-bottom: 1px solid var(--border);
     }
     .nav-inner {
@@ -234,7 +261,7 @@
       margin-bottom: 24px;
     }
     .metric-cell {
-      background: var(--bg);
+      background: var(--metric-bg);
       padding: 40px 28px;
       position: relative;
       overflow: hidden;
@@ -352,7 +379,7 @@
       width: 11px;
       height: 11px;
       border-radius: 50%;
-      background: var(--bg);
+      background: var(--dot-bg);
       border: 2px solid var(--lavender);
     }
     .timeline-dot.sky { border-color: var(--sky); }
@@ -430,7 +457,7 @@
       border: 1px solid var(--border);
       border-radius: var(--r);
       padding: 32px;
-      transition: border-color 0.3s;
+      transition: border-color 0.3s, background 0.35s;
     }
     .edu-card:hover { border-color: var(--border-accent); }
     .edu-card .school {
@@ -483,6 +510,7 @@
       padding: 52px;
       position: relative;
       overflow: hidden;
+      transition: background 0.35s;
     }
     .project-card::before {
       content: "";
@@ -645,7 +673,7 @@
       border-radius: 14px;
       font-size: 0.88rem;
       color: var(--muted);
-      transition: border-color 0.2s, color 0.2s;
+      transition: border-color 0.2s, color 0.2s, background 0.35s;
     }
     .footer-contact-item:hover { border-color: var(--border-accent); color: var(--text); }
     .footer-contact-item svg { color: var(--lavender); flex-shrink: 0; }
@@ -660,6 +688,46 @@
       font-size: 0.75rem;
       color: var(--subtle);
     }
+
+    /* ─── THEME TOGGLE ─── */
+    .theme-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--muted);
+      font-family: "DM Sans", system-ui, sans-serif;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      transition: color 0.2s, border-color 0.2s, background 0.2s;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--border-accent); }
+    .theme-toggle .toggle-track {
+      width: 28px;
+      height: 16px;
+      border-radius: 999px;
+      background: var(--border);
+      position: relative;
+      transition: background 0.3s;
+      flex-shrink: 0;
+    }
+    .theme-toggle .toggle-thumb {
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--muted);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), background 0.3s;
+    }
+    [data-theme="light"] .toggle-track { background: rgba(90,58,190,0.18); }
+    [data-theme="light"] .toggle-thumb { transform: translateX(12px); background: var(--lavender); }
 
     /* ─── REVEAL ANIMATION ─── */
     .reveal {
@@ -698,6 +766,15 @@
     }
 
     /* Scrollbar */
+    [data-theme="light"] .btn-primary {
+      background: linear-gradient(130deg, #7c5cd6, #3a82d8);
+      color: #fff;
+    }
+    [data-theme="light"] .hero-tag { color: var(--lavender); }
+    [data-theme="light"] .metric-cell { background: var(--metric-bg); }
+    [data-theme="light"] .timeline-dot { background: var(--dot-bg); }
+    [data-theme="light"] body::before { opacity: 0.7; }
+
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
@@ -1191,6 +1268,21 @@
       });
     }, { threshold: 0.5 });
     document.querySelectorAll('.counter').forEach(el => counterObserver.observe(el));
+
+    // ─── THEME TOGGLE ───
+    const btn = document.getElementById('themeToggle');
+    const label = document.getElementById('themeLabel');
+    const saved = localStorage.getItem('ch-theme') || 'dark';
+    const apply = theme => {
+      document.documentElement.setAttribute('data-theme', theme);
+      label.textContent = theme === 'dark' ? 'Light' : 'Dark';
+      localStorage.setItem('ch-theme', theme);
+    };
+    apply(saved);
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      apply(current === 'dark' ? 'light' : 'dark');
+    });
   </script>
 </body>
 </html>
